@@ -81,6 +81,22 @@ TestSuiteWrapper.prototype.getTestCases = function() {
     angular.forEach(testCases, function(tc){
         tc.setCategories(categories);
     });
+    angular.forEach(testCases, function(tc){
+        
+        if(tc.properties!=undefined){
+            angular.forEach(tc.properties,function(p){
+                    var pname=p["@name"];
+                    var isDescription=pname!=undefined&&pname=="Description";
+                    console.log(isDescription);
+                    if(isDescription){
+                        var pvalue=p["@value"];
+                        tc.DisPlayName=tc.name+"["+pvalue+"]";
+                        console.log(tc.DisPlayName);
+                }
+            })
+        }
+    });
+   
 
     return testCases;
 };
@@ -99,11 +115,17 @@ function TestCaseWrapper(rawTestCase) {
     }
 
     this.categories = [];
+    this.DisPlayName=this.name;
+   
+   
+     
 }
 
 TestCaseWrapper.prototype.setCategories = function(categories){
     this.categories = this.categories.concat(categories);
 };
+
+ 
 
 TestCaseWrapper.prototype.getCategories = function(){
     return this.categories.concat(getTestCategories.apply(this));

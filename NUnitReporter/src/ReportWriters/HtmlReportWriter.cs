@@ -61,7 +61,8 @@ namespace NUnitReporter.ReportWriters
 
         protected override void Write(XmlDocument document)
         {
-            CopyMainFileTo(OutputFilePath, JsonConvert.SerializeXmlNode(document, Formatting.Indented));
+            var jsonStr = JsonConvert.SerializeXmlNode(document, Formatting.Indented);
+            CopyMainFileTo(OutputFilePath, jsonStr);
 
             foreach (var pair in TemplateResources)
             {

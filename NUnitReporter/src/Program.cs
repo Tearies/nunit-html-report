@@ -19,7 +19,7 @@ namespace NUnitReporter
             {
                 return;
             }
-
+            Console.WriteLine("Start");
             try
             {
                 Validate.FileExist(options.TestResultXmlPath, "Test Result Xml Path");
@@ -54,6 +54,8 @@ namespace NUnitReporter
                 Console.Error.WriteLine(ex.Message);
                 Console.WriteLine(options.GetUsage());
             }
+
+            Console.WriteLine("End");
         }
 
         private static IEnumerable<AbstractReportWriter> GetSelectedWriters(CommandLineOptions options)

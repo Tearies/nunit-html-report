@@ -18,6 +18,11 @@ function DashboardController($scope, $location, $routeParams, StateStorage, repo
         return $scope.isResultTypeActive(RESULT_TYPE_ANY);
     };
 
+    $scope.GetDisplayName=function(testCase){
+        console.log(testCase.DisPlayName);
+        return testCase.DisPlayName;
+    };
+
     $scope.setAnyResultType = function(){
         $scope.setActiveResultType(RESULT_TYPE_ANY);
     };
@@ -33,7 +38,6 @@ function DashboardController($scope, $location, $routeParams, StateStorage, repo
     $scope.openTestCase = function(testCase) {
         $location.path('testcase/' + testCase.id);
     };
-
     $scope.saveQueryState = function(){
         StateStorage.put('query', $scope.query);
     }

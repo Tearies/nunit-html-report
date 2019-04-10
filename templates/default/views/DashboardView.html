@@ -58,7 +58,7 @@
             ng-click="openTestCase(tc)" 
             ng-repeat="tc in testCases | filter : testCaseResultFilter | filter: testCaseTextFilter"
         >
-            <small>{{tc.name}}</small>
+            <small>{{GetDisplayName(tc)}}</small>
         </a>
     </ul>
 </div>
