@@ -8,7 +8,7 @@ using CommandLine;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("NUnitReporter")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCopyright("Copyright © e-Techstar 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -17,10 +17,10 @@ using CommandLine;
 [assembly: Guid("4c567c1d-1959-487d-b42e-f745b235ede1")]
 
 [assembly: InternalsVisibleTo("NUnitReporterTests")]
-[assembly: AssemblyVersion("1.2.0.0")]
-[assembly: AssemblyFileVersion("1.2.0.0")]
+[assembly: AssemblyVersion("5.7.0.0")]
+[assembly: AssemblyFileVersion("5.7.0.0")]
 [assembly: AssemblyUsage(
-    "nure.exe TestResult.xml",
-    "nure.exe TestResult.xml -o path/to/generated/report",
-    "nure.exe TestResult.xml -a path/to/screenshots -o path/to/generated/report"
+    "NUnitReporter.exe TestResult.xml --html",
+    "NUnitReporter.exe TestResult.xml --html -o path/to/generated/report",
+    "NUnitReporter.exe TestResult.xml --html -a path/to/screenshots -o path/to/generated/report"
     )]
