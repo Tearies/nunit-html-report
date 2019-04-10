@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NUnitReporter</RootNamespace>
-    <AssemblyName>nure</AssemblyName>
+    <AssemblyName>NUnitReporter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>1ec7e547</NuGetPackageImportStamp>
