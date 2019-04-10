@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using System.Xml;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
@@ -103,7 +104,7 @@ namespace NUnitReporter.ReportWriters
                 }
 
                 var document = new HtmlDocument();
-
+                document.OptionDefaultStreamEncoding = Encoding.UTF8;
                 document.Load(stream);
 
                 HtmlNode body = document.DocumentNode.SelectSingleNode("//body");
