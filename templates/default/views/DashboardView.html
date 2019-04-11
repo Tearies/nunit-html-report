@@ -2,27 +2,27 @@
     <ul class="nav nav-pills nav-justified nav-filter">
         <li ng-class="{active: isResultTypeAny()}">
             <a ng-click="setAnyResultType()">
-                Total <span class="badge">{{summary.total}}</span>
+                总数 <span class="badge">{{summary.total}}</span>
             </a>
         </li>
         <li ng-class="{active: isResultTypeActive('Passed')}">
             <a ng-click="setActiveResultType('Passed')">
-                Passed <span class="badge success">{{summary.passed}}</span>
+                成功 <span class="badge success">{{summary.passed}}</span>
             </a>
         </li>
         <li ng-class="{active: isResultTypeActive('Failed')}">
             <a ng-click="setActiveResultType('Failed')">
-                Failed <span class="badge failed">{{summary.failed}}</span>
+                失败 <span class="badge failed">{{summary.failed}}</span>
             </a>
         </li>
         <li ng-class="{active: isResultTypeActive('Inconclusive')}">
             <a ng-click="setActiveResultType('Inconclusive')">
-                Inconclusive <span class="badge inconclusive">{{summary.inconclusive}}</span>
+                无效 <span class="badge inconclusive">{{summary.inconclusive}}</span>
             </a>
         </li>
         <li ng-class="{active: isResultTypeActive('Skipped')}">
             <a ng-click="setActiveResultType('Skipped')">
-                Skipped <span class="badge skipped">{{summary.skipped}}</span>
+                跳过 <span class="badge skipped">{{summary.skipped}}</span>
             </a>
         </li>
     </ul>
@@ -40,7 +40,7 @@
               />  
             </div>
             <div class="col-sm-2 excludeCheckbox">
-               <label for="excludefilter"><input type="checkbox" id="excludefilter" ng-model="excludeFilter" ng-change="saveExcludeFilterState()" class="checkbox-inline"><code>Exclude</code></label>
+               <label for="excludefilter"><input type="checkbox" id="excludefilter" ng-model="excludeFilter" ng-change="saveExcludeFilterState()" class="checkbox-inline"><code>排除</code></label>
             </div>
         </div>
       </div>
@@ -70,27 +70,27 @@
             'text-success': currentTestCase.result == 'Passed',
             'text-danger': currentTestCase.result == 'Failed',
             'text-warning': currentTestCase.result == 'Skipped'
-        }">[{{currentTestCase.result}}] {{currentTestCase.name}}</span>
+        }">[{{GetTestCaseResult(currentTestCase)}}] {{currentTestCase.name}}</span>
         <span class="label pull-right" ng-class="{
             'label-success': currentTestCase.result == 'Passed',
             'label-danger': currentTestCase.result == 'Failed',
             'label-warning': currentTestCase.result == 'Skipped'
-        }">{{currentTestCase.duration}}s</span>
+        }">{{currentTestCase.duration}}秒</span>
         <p><small>{{currentTestCase.classname}}</small></p>
         </h3>
     </div>
     <div ng-show="!!currentTestCase.getMessage()">
-        <h4>Message</h4>
+        <h4>消息</h4>
         <pre class="truncated">{{currentTestCase.getMessage()}}</pre>
         <hr/>
     </div>
     <div ng-show="!!currentTestCase.output">
-        <h4>Output</h4>
+        <h4>输出</h4>
         <pre class="truncated">{{currentTestCase.getOutput()}}</pre>
         <hr/>
     </div>
     <div ng-show="!!currentTestCase.eventLog">
-        <h4>Event Log</h4>
+        <h4>事件</h4>
         <treecontrol class="tree-light" tree-model="currentTestCase.getEventLog()" options="eventTreeOptions">
            <span class="description">{{node.description}}</span>
            <span ng-if="node.arguments && node.arguments.length > 0" class="arguments">{{node.arguments}}</span>
@@ -99,7 +99,7 @@
         <hr/>
     </div>
     <div ng-show="!!currentTestCase.images">
-        <h4>Screenshots</h4>
+        <h4>截屏</h4>
         <uib-carousel interval="5000" class=".carousel">
             <uib-slide ng-repeat="image in currentTestCase.images" active="slide.active">
                 <img ng-src="{{image}}" style="margin:auto;"/>
