@@ -1,4 +1,4 @@
-<div class="left-menu col-md-4">
+<div class="left-menu col-md-6">
     <ul class="nav nav-pills nav-justified nav-filter">
         <li ng-class="{active: isResultTypeAny()}">
             <a ng-click="setAnyResultType()">
@@ -26,85 +26,76 @@
             </a>
         </li>
     </ul>
-      <div class="form-horizontal">
-          <div class="form-group">
+    <div class="form-horizontal">
+        <div class="form-group">
             <div class="col-sm-10">
-              <input 
-                 type="search" 
-                 class="form-control" 
-                 ng-model="query" 
-                 ng-change="saveQueryState()"
-                 uib-typeahead="name as tc.name for tc in testCases | filter:$viewValue | limitTo:8" 
-                 typeahead-on-select="setQueryFilterValue($item.name)" 
-                 placeholder="Test Case Filter" 
-              />  
+                <input type="search" class="form-control" ng-model="query" ng-change="saveQueryState()"
+                    uib-typeahead="name as tc.name for tc in testCases | filter:$viewValue | limitTo:8"
+                    typeahead-on-select="setQueryFilterValue($item.name)" placeholder="Test Case Filter" />
             </div>
             <div class="col-sm-2 excludeCheckbox">
-               <label for="excludefilter"><input type="checkbox" id="excludefilter" ng-model="excludeFilter" ng-change="saveExcludeFilterState()" class="checkbox-inline"><code>排除</code></label>
+                <label for="excludefilter"><input type="checkbox" id="excludefilter" ng-model="excludeFilter"
+                        ng-change="saveExcludeFilterState()" class="checkbox-inline"><code>排除</code></label>
             </div>
         </div>
-      </div>
-
-    <ul class="list-group">
-        <a 
-            class="list-group-item" 
-            ng-class="{
-              'list-group-item-success': tc.result == 'Passed',
-              'list-group-item-danger': tc.result == 'Failed',
-              'list-group-item-warning': tc.result == 'Skipped',
-              'list-group-item-info': tc.result == 'Inconclusive',
-              'selected': tc.id === currentTestCase.id
-            }" 
-            ng-click="openTestCase(tc)" 
-            ng-repeat="tc in testCases | filter : testCaseResultFilter | filter: testCaseTextFilter"
-        >
+    </div>
+    <div class="CaseGroup col-md-6">
+        <a class="list-group-item" ng-class="{
+      'list-group-item-success': tc.result == 'Passed',
+      'list-group-item-danger': tc.result == 'Failed',
+      'list-group-item-warning': tc.result == 'Skipped',
+      'list-group-item-info': tc.result == 'Inconclusive',
+      'selected': tc.id === currentTestCase.id
+    }" ng-click="openTestCase(tc)"
+            ng-repeat="tc in testCases | filter : testCaseResultFilter | filter: testCaseTextFilter">
             <small>{{GetDisplayName(tc)}}</small>
         </a>
-    </ul>
+    </div>
+
 </div>
 
-<div class="col-md-8">
+<div class="col-md-6">
     <div class="page-header">
         <h3 class="test-case-name">
-        <span ng-class="{
+            <span ng-class="{
             'text-success': currentTestCase.result == 'Passed',
             'text-danger': currentTestCase.result == 'Failed',
             'text-warning': currentTestCase.result == 'Skipped'
         }">[{{GetTestCaseResult(currentTestCase)}}] {{currentTestCase.name}}</span>
-        <span class="label pull-right" ng-class="{
+            <span class="label pull-right" ng-class="{
             'label-success': currentTestCase.result == 'Passed',
             'label-danger': currentTestCase.result == 'Failed',
             'label-warning': currentTestCase.result == 'Skipped'
         }">{{currentTestCase.duration}}秒</span>
-        <p><small>{{currentTestCase.classname}}</small></p>
+            <p><small>{{currentTestCase.classname}}</small></p>
         </h3>
     </div>
     <div ng-show="!!currentTestCase.getMessage()">
         <h4>消息</h4>
         <pre class="truncated">{{currentTestCase.getMessage()}}</pre>
-        <hr/>
+        <hr />
     </div>
     <div ng-show="!!currentTestCase.output">
         <h4>输出</h4>
         <pre class="truncated">{{currentTestCase.getOutput()}}</pre>
-        <hr/>
+        <hr />
     </div>
     <div ng-show="!!currentTestCase.eventLog">
         <h4>事件</h4>
         <treecontrol class="tree-light" tree-model="currentTestCase.getEventLog()" options="eventTreeOptions">
-           <span class="description">{{node.description}}</span>
-           <span ng-if="node.arguments && node.arguments.length > 0" class="arguments">{{node.arguments}}</span>
-           <span ng-if="node.durationInSeconds" class="duration pull-right">{{node.durationInSeconds}} s</span>
+            <span class="description">{{node.description}}</span>
+            <span ng-if="node.arguments && node.arguments.length > 0" class="arguments">{{node.arguments}}</span>
+            <span ng-if="node.durationInSeconds" class="duration pull-right">{{node.durationInSeconds}} s</span>
         </treecontrol>
-        <hr/>
+        <hr />
     </div>
     <div ng-show="!!currentTestCase.images">
         <h4>截屏</h4>
         <uib-carousel interval="5000" class=".carousel">
             <uib-slide ng-repeat="image in currentTestCase.images" active="slide.active">
-                <img ng-src="{{image}}" style="margin:auto;"/>
+                <img ng-src="{{image}}" style="margin:auto;" />
             </uib-slide>
         </uib-carousel>
-        <hr/>
+        <hr />
     </div>
 </div>
