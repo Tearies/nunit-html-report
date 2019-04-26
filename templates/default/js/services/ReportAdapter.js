@@ -12,7 +12,8 @@ ReportAdapter.prototype.summary = function() {
         'passed': this.report['passed'] || 0,
         'failed': this.report['failed'] || 0,
         'inconclusive': this.report['inconclusive'] || 0,
-        'skipped': this.report['skipped'] || 0
+        'skipped': this.report['skipped'] || 0,
+        'duration':this.report['duration']|0
     };
 };
 
